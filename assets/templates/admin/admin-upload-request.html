@@ -1,0 +1,204 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.icon' %}" />
+  </head>
+  <body>
+    <div class=" container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="{% url 'admindashboard' %}"><img src="{% static 'admin/images/12.png' %}"alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="{% url 'admindashboard' %}"><img src="{% static 'admin/images/13.png' %}" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                </div>
+                <input type="text" class="form-control bg-transparent border-0" name="search" placeholder="Search projects">
+                <!-- <button type="submit" name='btn2' >submit</button> -->
+              </div>
+            </form>>
+          </div>
+          <ul class="navbar-nav navbar-nav-right">
+           
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+           
+            
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="{% url 'home' %}">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+            <li class="nav-item nav-settings d-none d-lg-block">
+              <a class="nav-link" href="#">
+                <i class="mdi mdi-format-line-spacing"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admindashboard' %}">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_user_register_request' %}">
+                <span class="menu-title">User Request</span>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_user_upload_file_request' %}">
+                <span class="menu-title">User Upload Request</span>
+                <i class="mdi mdi mdi-upload menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_user_group_join_request' %}">
+                  <span class="menu-title">Groups Join Request</span>
+                  <i class="mdi  mdi-flip-to-front menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_view_group_details' %}">
+                  <span class="menu-title">Groups Details</span>
+                  <i class="mdi mdi-contacts menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_view_user_feedbacks' %}">
+                  <span class="menu-title">User Feedbacks</span>
+                  <i class="mdi mdi-message-processing menu-icon"></i>
+                </a>
+              </li>
+
+            
+            <li class="nav-item sidebar-actions">
+              <span class="nav-link">
+                <div class="border-bottom">
+                  <h6 class="font-weight-normal mb-3">Groups</h6>
+                </div>
+                <a href="{% url 'admin_group_create' %}" class="btn btn-block btn-lg btn-gradient-primary mt-4">Create A Group</a>
+                
+              </span>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> user Upload File request </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Icons</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">User Upload Post request</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin">
+                <div class="card  overflow-auto">
+                  <div class="card-body">
+                    <table class="table table-hover table-striped justify-content-center">
+                        <thead class=" justify-content-center">
+                            <tr class="thead  text-white" style="font-weight: 500; background-color: #15283c;"> 
+                             
+                              
+                              <td>Group Name</td>
+                              <td>Post Name</td>
+                              <td>Description</td>                               
+                              <td>View File</td>
+                              <td>Status</td>
+                              <td>Request</td>
+                                                           
+                           </tr>                              
+                        </thead class="thead-dark justify-content-center">
+                        
+                        {% for i in data %}
+                        <tr>
+                           <td>{{i.upload_group_name}}</td>
+                           <td>{{i.upload_post_name}}</td>
+                           <td><textarea   readonly style="overflow:auto;">{{i.upload_describtion}}</textarea></td>
+                           <td>{{i.upload_user_view}}</td> 
+                           <td>{{i.upload_status}}</td>                      
+                           <td><a href="/user_upload_accept/{{i.upload_id}}"><button class="btn btn-primary btn-md" style="font-size: 10px; margin-right:8px">Accept</button></a><a href="/use_register_rejected/{{i.upload_id}}"><button class="btn btn-danger btn-md" style="font-size: 10px;">Reject</button></a></td>
+                          </tr>
+                          {% endfor %}
+                     
+                         
+                        <tbody>
+                           
+                        </tbody>
+                        
+                     </table>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+      </div>
+    </div>
+    <!-- plugins:js -->
+    <script src="{% static 'admin/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'admin/js/off-canvas.js' %}"></script>
+    <script src="{% static 'admin/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'admin/js/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>
